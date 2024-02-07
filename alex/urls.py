@@ -21,4 +21,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('food/', include('food.urls')),
     path('intro/', include('intro.urls')),
+
+    # REST api for chat service
+    path('api/chat/', include('chat.urls'))
 ]
