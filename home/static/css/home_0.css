@@ -163,7 +163,6 @@ body {
   padding: 10px;
   border-radius: 5px;
   word-wrap: break-word;
-	word-break:	break-all; /*줄바꿈 문자 출력 위해서*/
 }
 
 .message.sent {
@@ -183,7 +182,6 @@ body {
   background-color: #B60005;
   color: #fff;
   margin-right: auto;
-	white-space: pre-wrap; /*줄바꿈 문자 출력 위해서*/
 }
 
 .typing-indicator {
