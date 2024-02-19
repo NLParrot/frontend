@@ -37,7 +37,7 @@ function displaySentMessage(messageInput) {
 var state = {
     "intent1": "",
     "intent2": "",
-    "slot": "",
+    "slot": {},
     "user_text": ""
 }
 
