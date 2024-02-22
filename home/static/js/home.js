@@ -34,7 +34,7 @@ function displaySentMessage(messageInput) {
     return sentMessageContainer
 }
 
-var state = {
+var slot = {
     "intent1": "",
     "intent2": "",
     "slot": {},
@@ -68,6 +68,80 @@ function displayResponseMessage(response_message) {
     return responseContainer;
 }
 
+function displayLocationMap(response_container, location_name, coordinates) {
+    let container = document.createElement("div");
+    container.style.width = '30em';
+    container.style.height = '22em';
+    response_container.getElementsByTagName('p')[0].appendChild(container);
+
+    let lat = coordinates['latitude'];
+    let lng = coordinates['longitude'];
+    let options = {
+        center: new kakao.maps.LatLng(lat, lng),
+        level: 3 // zoom level
+    };
+
+    let map = new kakao.maps.Map(container, options);
+    let marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(lat, lng),
+        map: map
+    });
+
+    let style = "padding:5px; color:black; margin-left:auto; margin-right:auto";
+    let infoWindow = new kakao.maps.InfoWindow({
+        content: `<div style="${style}">${location_name}</div>`
+    });
+
+    infoWindow.open(map, marker);
+}
+
+function displayPathMap(response_container, start_name, goal_name, start, goal, path) {
+    let container = document.createElement("div");
+    container.style.width = '30em';
+    container.style.height = '22em';
+    response_container.getElementsByTagName('p')[0].appendChild(container);
+
+    let lat = (start['latitude'] + goal['latitude']) / 2;
+    let lng = (start['longitude'] + goal['longitude']) / 2;
+    let options = {
+        center: new kakao.maps.LatLng(lat, lng),
+        level: 3 // zoom level
+    };
+
+    let map = new kakao.maps.Map(container, options);
+    let start_marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(start['latitude'], start['longitude']),
+        map: map
+    });
+    let goal_marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(goal['latitude'], goal['longitude']),
+        map: map
+    });
+
+    let style = "padding:5px; color:black; margin-left:auto; margin-right:auto;";
+    let startInfoWindow = new kakao.maps.InfoWindow({
+        content: `<div style="${style}">${start_name}</div>`
+    });
+    let goalInfoWindow = new kakao.maps.InfoWindow({
+        content: `<div style="${style}">${goal_name}</div>`
+    });
+
+    startInfoWindow.open(map, start_marker);
+    goalInfoWindow.open(map, goal_marker);
+
+
+    // draw path
+    let path_kakao = path.map((x) => new kakao.maps.LatLng(x['latitude'], x['longitude']));
+    let polyline = new kakao.maps.Polyline({
+        map: map, 
+        path: path_kakao,
+        strokeWeight: 3, 
+        strokeColor: '#FF0000', 
+        strokeOpacity: 0.9, 
+        strokeStyle: 'solid' 
+    });
+}
+
 function sendMessage() {
     let messageInput = document.getElementById("message-input");
     let chatBody = document.getElementById("chat-body");
@@ -84,8 +158,8 @@ function sendMessage() {
     // Scroll to the bottom of the chat body to show the latest message
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    state["user_text"] = message
-    send_json = JSON.stringify(state)
+    slot["user_text"] = message
+    send_json = JSON.stringify(slot)
 
     fetch("http://127.0.0.1:5000/api/chat/message", {
         method: "POST",
@@ -99,9 +173,19 @@ function sendMessage() {
             console.log(data);
             console.log("Parent node:", sentMessageContainer);
             console.log("Child node to remove:", typingIndicator);
-            state = data;
+            slot = data['slot'];
             sentMessageContainer.removeChild(typingIndicator);
-            displayResponseMessage(data["response_text"]);
+            let response_container = displayResponseMessage(data["response_text"]);
+            if ('display_location_map' in slot) {
+                displayLocationMap(response_container, slot['location_name'], slot['coordinate']);
+                delete slot.display_location_map;
+            }
+            else if ('display_path_map' in slot) {
+                let start = slot['path'][0];
+                let goal = slot['path'][slot['path'].length - 1];
+                displayPathMap(response_container, slot['location_from'], slot['location_to'], start, goal, slot['path']);
+                delete slot.display_path_map;
+            }
         })
         .catch(data => {
             console.log(data);
