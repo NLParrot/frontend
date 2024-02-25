@@ -37,8 +37,8 @@ function displaySentMessage(messageInput) {
 var slot = {
     "intent1": "",
     "intent2": "",
-    "slot": {},
-    "user_text": ""
+    "status": "normal",
+    "user_text": "",
 }
 
 
@@ -133,12 +133,12 @@ function displayPathMap(response_container, start_name, goal_name, start, goal, 
     // draw path
     let path_kakao = path.map((x) => new kakao.maps.LatLng(x['latitude'], x['longitude']));
     let polyline = new kakao.maps.Polyline({
-        map: map, 
+        map: map,
         path: path_kakao,
-        strokeWeight: 3, 
-        strokeColor: '#FF0000', 
-        strokeOpacity: 0.9, 
-        strokeStyle: 'solid' 
+        strokeWeight: 3,
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.9,
+        strokeStyle: 'solid'
     });
 }
 
@@ -159,7 +159,7 @@ function sendMessage() {
     chatBody.scrollTop = chatBody.scrollHeight;
 
     slot["user_text"] = message
-    send_json = JSON.stringify(slot)
+    let send_json = JSON.stringify(slot)
 
     fetch("http://127.0.0.1:5000/api/chat/message", {
         method: "POST",
@@ -173,7 +173,7 @@ function sendMessage() {
             console.log(data);
             console.log("Parent node:", sentMessageContainer);
             console.log("Child node to remove:", typingIndicator);
-            slot = data['slot'];
+            slot = data;
             sentMessageContainer.removeChild(typingIndicator);
             let response_container = displayResponseMessage(data["response_text"]);
             if ('display_location_map' in slot) {
