@@ -19,7 +19,7 @@ header {
 }
 header .inner {
 	width: 1180px;
-	height: 120px; /*윗부분으로부터 길이*/
+	height: 80px; /*윗부분으로부터 길이*/
 	margin: 0px auto;
 	position: relative; /*자식 absolute 요소의 기준점 설정*/
 }

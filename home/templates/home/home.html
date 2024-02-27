@@ -9,10 +9,9 @@
   <title>CHAT</title>
   <link rel="shortcut icon" href="{% static 'image/favicon.png' %}" type="image/x-icon"> <!--favicon-->
   <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/x-icon">
-  <link rel="stylesheet" href={% static 'css/home.css' %}> <!--import할 css 파일 위치 적기-->
-
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b54c9964468d92e3c0786edc63d6d8a"></script>
-  <script defer src="{% static 'js/home.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}?after"> <!--import할 css 파일 위치 적기-->
+  <script defer src="{% static 'js/home.js' %}?after"></script>
 </head>
 <body>
   <header>
@@ -23,32 +22,32 @@
           <li>
             <a href="#">소개</a>
             <ul class="submenu">
-              <li><a href="{% url 'intro_alex' %}">Alex</a></li>
-              <li><a href="{% url 'intro_parrot' %}">패럿</a></li>
-              <li><a href="{% url 'intro_CNU' %}">CNU</a></li>
-              <li><a href="{% url 'intro_release' %}">Release</a></li>
+              <li><a href="{% url 'intro_alex'%}">Alex</a></li>
+              <li><a href="{% url 'intro_parrot'%}">패럿</a></li>
+              <li><a href="{% url 'intro_CNU'%}">CNU</a></li>
+              <li><a href="{% url 'intro_release'%}">Release</a></li>
             </ul>
           </li>
           <li>
             <a href="#">서강맛집</a>
             <ul class="submenu">
-              <li><a href="{% url 'food_list' %}">전체</a></li>
-              <li><a href="{% url 'food_jeong' %}">정문</a></li>
-              <li><a href="{% url 'food_nam' %}">남문</a></li>
-              <li><a href="{% url 'food_hoo' %}">후문</a></li>
-              <li><a href="{% url 'food_shinchon' %}">신촌</a></li>
+              <li><a href="{% url 'food_list'%}">전체</a></li>
+              <li><a href="{% url 'food_jeong'%}">정문</a></li>
+              <li><a href="{% url 'food_nam'%}">남문</a></li>
+              <li><a href="{% url 'food_hoo'%}">후문</a></li>
+              <li><a href="{% url 'food_shinchon'%}">신촌</a></li>
             </ul>
           </li>
           <li><a href="#">학식</a></li>
-          <li><a href="#">100문 100답</a></li>
+          <li><a href="{% url 'hunQ' %}">100문 100답</a></li>
           <li>
             <a href="#">그 외 기능</a>
             <ul class="submenu">
               <li><a href="#">빈강의실</a></li>
-              <li><a href="#">열람실 조회</a></li>
+              <li><a href="https://library.sogang.ac.kr/htmlmanager/service/21">열람실 조회</a></li>
               <li><a href="#">뻔뻔</a></li>
-              <li><a href="#">도서검색</a></li>
-              <li><a href="#">Q&A</a></li>
+              <li><a href="https://library.sogang.ac.kr/">도서검색</a></li>
+              <li><a href="{% url 'question_list' %}">Q&A</a></li>
             </ul>
           </li>
         </ul>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>FOOD</title>
+  <title>ALEX</title>
   <link rel="shortcut icon" href="{% static 'image/favicon.png' %}" type="image/x-icon"> <!--favicon-->
   <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/x-icon">
   <link rel="stylesheet" href="{% static 'css/intro.css' %}"> <!--import할 css 파일 위치 적기-->
@@ -38,15 +38,15 @@
             </ul>
           </li>
           <li><a href="#">학식</a></li>
-          <li><a href="#">100문 100답</a></li>
+          <li><a href="{% url 'hunQ' %}">100문 100답</a></li>
           <li>
             <a href="#">그 외 기능</a>
             <ul class="submenu">
               <li><a href="#">빈강의실</a></li>
-              <li><a href="#">열람실 조회</a></li>
+              <li><a href="https://library.sogang.ac.kr/htmlmanager/service/21">열람실 조회</a></li>
               <li><a href="#">뻔뻔</a></li>
-              <li><a href="#">도서검색</a></li>
-              <li><a href="#">Q&A</a></li>
+              <li><a href="https://library.sogang.ac.kr/">도서검색</a></li>
+              <li><a href="{% url 'question_list' %}">Q&A</a></li>
             </ul>
           </li>
         </ul>

@@ -9,8 +9,9 @@
   <title>FOOD</title>
   <link rel="shortcut icon" href="{% static 'image/favicon.png' %}" type="image/x-icon"> <!--favicon-->
   <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/x-icon">
-  <link rel="stylesheet" href="{% static 'css/food_list.css' %}"> <!--import할 css 파일 위치 적기-->
-  <script defer src="{% static 'js/food_list.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/food_list.css' %}?after"> <!--?after 적어야 css파일 변경점 적용됨--> <!--import할 css 파일 위치 적기-->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script defer src="{% static 'js/food_list.js' %}?after"></script>
 </head>
 <body>
   <header>
@@ -38,27 +39,33 @@
             </ul>
           </li>
           <li><a href="#">학식</a></li>
-          <li><a href="#">100문 100답</a></li>
+          <li><a href="{% url 'hunQ' %}">100문 100답</a></li>
           <li>
             <a href="#">그 외 기능</a>
             <ul class="submenu">
               <li><a href="#">빈강의실</a></li>
-              <li><a href="#">열람실 조회</a></li>
+              <li><a href="https://library.sogang.ac.kr/htmlmanager/service/21">열람실 조회</a></li>
               <li><a href="#">뻔뻔</a></li>
-              <li><a href="#">도서검색</a></li>
-              <li><a href="#">Q&A</a></li>
+              <li><a href="https://library.sogang.ac.kr/">도서검색</a></li>
+              <li><a href="{% url 'question_list' %}">Q&A</a></li>
             </ul>
           </li>
         </ul>
     </div>
   </header>
 
+  <div class="random-food">
+    <h2>랜덤 맛집</h2>
+    <div id="txt">??????????</div>
+    <button id="random-button" onclick="randomfood()"> 돌려! </button>
+  </div>
+  
   <div class="container">
-    <h1>음식점 목록</h1>
+    <h2 class="restaurant_list">음식점 목록</h2>
     <ul class="list-group">
       {% for food in foods %}
       <li class="list-group-item">
-        <a href="">{{ food.restaurant }}</a>
+        <a href="{% url 'food_detail' food.id %}">{{ food.restaurant }} ({{ food.description }})</a>
       </li>
       {% endfor %}
     </ul>

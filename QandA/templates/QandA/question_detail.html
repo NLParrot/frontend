@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ALEX</title>
+  <link rel="shortcut icon" href="{% static 'image/favicon.png' %}" type="image/x-icon"> <!--favicon-->
+  <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/question_detail.css' %}"> <!--import할 css 파일 위치 적기-->
+  <script defer src="{% static 'js/intro.js' %}"></script>
+</head>
+<body>
+  <header>
+    <div class="inner">
+        <h1><a href="{% url 'home' %}">Alex</a></h1>
+
+        <ul id="gnb">
+          <li>
+            <a href="#">소개</a>
+            <ul class="submenu">
+              <li><a href="{% url 'intro_alex'%}">Alex</a></li>
+              <li><a href="{% url 'intro_parrot'%}">패럿</a></li>
+              <li><a href="{% url 'intro_CNU'%}">CNU</a></li>
+              <li><a href="{% url 'intro_release'%}">Release</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">서강맛집</a>
+            <ul class="submenu">
+              <li><a href="{% url 'food_list'%}">전체</a></li>
+              <li><a href="{% url 'food_jeong'%}">정문</a></li>
+              <li><a href="{% url 'food_nam'%}">남문</a></li>
+              <li><a href="{% url 'food_hoo'%}">후문</a></li>
+              <li><a href="{% url 'food_shinchon'%}">신촌</a></li>
+            </ul>
+          </li>
+          <li><a href="#">학식</a></li>
+          <li><a href="{% url 'hunQ' %}">100문 100답</a></li>
+          <li>
+            <a href="#">그 외 기능</a>
+            <ul class="submenu">
+              <li><a href="#">빈강의실</a></li>
+              <li><a href="https://library.sogang.ac.kr/htmlmanager/service/21">열람실 조회</a></li>
+              <li><a href="#">뻔뻔</a></li>
+              <li><a href="https://library.sogang.ac.kr/">도서검색</a></li>
+              <li><a href="{% url 'question_list' %}">Q&A</a></li>
+            </ul>
+          </li>
+        </ul>
+    </div>
+  </header>
+
+  <div class="question_detail">
+    <h2>{{ question.title }}</h2>
+    <p>{{ question.content }}</p>
+    <p class="time">{{ question.created_at }}</p>
+
+    <h3>Answers</h3>
+    {% for answer in answers %}
+      <p>{{ answer.content }}</p>
+      <p class="time">{{ answer.created_at }}</p>
+      <hr>
+    {% endfor %}
+    <form id="answerForm" method="post" action="{% url 'answer_question' question.id %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">답변 달러가기</button>
+    </form>
+  </div>
+
+  <footer>
+    <div class="inner">
+        <div class="upper">
+            <h1>Alex</h1>
+            <ul>
+                <li><a href="#">Policy</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Family Site</a></li>
+                <li><a href="#">Sitemap</a></li>
+            </ul>
+        </div>
+
+        <div class="lower">
+            <address>
+                서울특별시 마포구 백범로 35<br>
+                TEL : 031-111-1234 C.P : 010-1234-5678
+            </address>
+            <p>
+                2024 Alex &copy; copyright all right reserved.
+            </p>
+        </div>
+    </div>
+  </footer>
+</body>
+</html>

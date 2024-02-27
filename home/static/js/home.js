@@ -193,3 +193,9 @@ function sendMessage() {
             displayResponseMessage("There was an Error");
         })
 }
+
+document.getElementById("message-input").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  });

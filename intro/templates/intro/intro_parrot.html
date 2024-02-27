@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>FOOD</title>
+  <title>PARROT</title>
   <link rel="shortcut icon" href="{% static 'image/favicon.png' %}" type="image/x-icon"> <!--favicon-->
   <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/x-icon">
-  <link rel="stylesheet" href="{% static 'css/intro.css' %}"> <!--import할 css 파일 위치 적기-->
+  <link rel="stylesheet" href="{% static 'css/intro_parrot.css' %}?after"> <!--import할 css 파일 위치 적기-->
   <script defer src="{% static 'js/intro.js' %}"></script>
 </head>
 <body>
@@ -38,15 +38,15 @@
             </ul>
           </li>
           <li><a href="#">학식</a></li>
-          <li><a href="#">100문 100답</a></li>
+          <li><a href="{% url 'hunQ' %}">100문 100답</a></li>
           <li>
             <a href="#">그 외 기능</a>
             <ul class="submenu">
               <li><a href="#">빈강의실</a></li>
-              <li><a href="#">열람실 조회</a></li>
+              <li><a href="https://library.sogang.ac.kr/htmlmanager/service/21">열람실 조회</a></li>
               <li><a href="#">뻔뻔</a></li>
-              <li><a href="#">도서검색</a></li>
-              <li><a href="#">Q&A</a></li>
+              <li><a href="https://library.sogang.ac.kr/">도서검색</a></li>
+              <li><a href="{% url 'question_list' %}">Q&A</a></li>
             </ul>
           </li>
         </ul>
@@ -54,7 +54,15 @@
   </header>
 
   <div class="explain">
-    <h1>설명 적기 / 사진 등도 넣기</h1>
+    <img id="parrot_logo" src="{% static 'image/parrot_logo.png' %}">
+    <div>서강대학교 데이터 사이언스 학회 Parrot은 데이터 사이언스에 관심이 있는 학생들이 모여 학습 네트워크를 형성하는 서강대학교 교내 학회입니다.<br>
+      Parrot은 데이터 사이언스에 관심이 있는 서강대학교 학생이라면 누구나 함께할 수 있습니다.<br>
+      Parrot은 학기와 방학 중 기초 파이썬부터, 딥러닝, 머신러닝 등 폭 넓은 교육세션이 진행되고 있으며 마음이 맞는 학생들과 함께 시각화, NLP 등 데이터와 관련된 스터디를 진행하고 있습니다.<br>
+      또한 교육 세션 및 스터디를 통해 배운 내용을 토대로 여러가지 프로젝트들을 진행하여 학회원들의 역량을 극대화 할 수 있도록 최선을 다해 지원하고 있습니다.<br>
+      Parrot은 데이터 사이언스라는 공통된 관심사를 바탕으로 형성된 플랫폼 안에서 함께 성장하며 새로운 빅데이터 시대를 이끌어갈 미래의 데이터 사이언티스트들을 기다리고 있습니다!<br>
+    </div>
+    <br><a id="go_parrot" href="https://sogang-parrot.notion.site/sogang-parrot/Sogang-Parrot-ab6f98ec38b24a3d8d1da775813a7893">패럿에 대해 더 알아보기</a><br>
+  </div>
 
   <footer>
     <div class="inner">
