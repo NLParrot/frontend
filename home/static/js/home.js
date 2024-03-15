@@ -72,7 +72,7 @@ function displayLocationMap(response_container, location_name, coordinates) {
     let container = document.createElement("div");
     let message_container = response_container.getElementsByTagName('p')[0];
 
-    container.style.width = '95%';
+    container.style.width = '100%';
     container.style.height = '50vh';
     message_container.appendChild(container);
     message_container.style.width='95%';
@@ -102,7 +102,7 @@ function displayPathMap(response_container, start_name, goal_name, start, goal, 
     let container = document.createElement("div");
     let message_container = response_container.getElementsByTagName('p')[0];
 
-    container.style.width = '95%';
+    container.style.width = '100%';
     container.style.height = '50vh';
     message_container.appendChild(container);
     message_container.style.width='95%';
