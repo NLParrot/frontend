@@ -70,9 +70,12 @@ function displayResponseMessage(response_message) {
 
 function displayLocationMap(response_container, location_name, coordinates) {
     let container = document.createElement("div");
-    container.style.width = '30em';
-    container.style.height = '22em';
-    response_container.getElementsByTagName('p')[0].appendChild(container);
+    let message_container = response_container.getElementsByTagName('p')[0];
+
+    container.style.width = '95%';
+    container.style.height = '50vh';
+    message_container.appendChild(container);
+    message_container.style.width='95%';
 
     let lat = coordinates['latitude'];
     let lng = coordinates['longitude'];
