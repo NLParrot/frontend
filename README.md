@@ -1,4 +1,4 @@
-# frontend_test
+# frontend
 프론트엔드 파일들 최종적으로 올릴 레포입니다.
 
 가상환경 파일인 myvenv 빼고 모두 올려놓았습니다.
