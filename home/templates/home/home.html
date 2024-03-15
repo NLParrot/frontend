@@ -17,40 +17,6 @@
   <header>
     <div class="inner">
         <h1><a href="{% url 'home' %}">Alex</a></h1>
-
-        <ul id="gnb">
-          <li>
-            <a href="#">소개</a>
-            <ul class="submenu">
-              <li><a href="{% url 'intro_alex'%}">Alex</a></li>
-              <li><a href="{% url 'intro_parrot'%}">패럿</a></li>
-              <li><a href="{% url 'intro_CNU'%}">CNU</a></li>
-              <li><a href="{% url 'intro_release'%}">Release</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">서강맛집</a>
-            <ul class="submenu">
-              <li><a href="{% url 'food_list'%}">전체</a></li>
-              <li><a href="{% url 'food_jeong'%}">정문</a></li>
-              <li><a href="{% url 'food_nam'%}">남문</a></li>
-              <li><a href="{% url 'food_hoo'%}">후문</a></li>
-              <li><a href="{% url 'food_shinchon'%}">신촌</a></li>
-            </ul>
-          </li>
-          <li><a href="#">학식</a></li>
-          <li><a href="{% url 'hunQ' %}">100문 100답</a></li>
-          <li>
-            <a href="#">그 외 기능</a>
-            <ul class="submenu">
-              <li><a href="#">빈강의실</a></li>
-              <li><a href="https://library.sogang.ac.kr/htmlmanager/service/21">열람실 조회</a></li>
-              <li><a href="#">뻔뻔</a></li>
-              <li><a href="https://library.sogang.ac.kr/">도서검색</a></li>
-              <li><a href="{% url 'question_list' %}">Q&A</a></li>
-            </ul>
-          </li>
-        </ul>
     </div>
   </header>
 
@@ -59,36 +25,12 @@
       <h3>Chat Alex</h3>
     </div>
     <div id="chat-body">
-      <!-- Chat messages will be appended here -->
+
     </div>
     <div id="input-container">
       <input type="text" id="message-input" placeholder="Type your message...">
       <button id="send-button" onclick="sendMessage()">Send</button>
     </div>
   </div>
-
-  <footer>
-    <div class="inner">
-        <div class="upper">
-            <h1>Alex</h1>
-            <ul>
-                <li><a href="#">Policy</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Family Site</a></li>
-                <li><a href="#">Sitemap</a></li>
-            </ul>
-        </div>
-
-        <div class="lower">
-            <address>
-                서울특별시 마포구 백범로 35<br>
-                TEL : 031-111-1234 C.P : 010-1234-5678
-            </address>
-            <p>
-                2024 Alex &copy; copyright all right reserved.
-            </p>
-        </div>
-    </div>
-  </footer>
 </body>
 </html>
