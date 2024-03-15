@@ -85,7 +85,7 @@ body {
 #chat-container {
     min-height: 80vh;
     max-width: 70%;
-    margin: 20px auto;
+    margin: auto;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -208,7 +208,6 @@ body {
     }
     #chat-container {
 	max-width: 95%;
-	margin: 0;
     }
     #message-input {
 	width: 80%;
