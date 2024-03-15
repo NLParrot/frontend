@@ -102,7 +102,7 @@ function displayPathMap(response_container, start_name, goal_name, start, goal, 
     container.style.width = '95%';
     container.style.height = '50vh';
     message_container.appendChild(container);
-    message_container.style.width = '95%';
+    message_container.style.width='95%';
 
     let lat = (start['latitude'] + goal['latitude']) / 2;
     let lng = (start['longitude'] + goal['longitude']) / 2;
@@ -199,6 +199,6 @@ function sendMessage() {
 
 document.getElementById("message-input").addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
-        sendMessage();
+      sendMessage();
     }
-});
+  });
