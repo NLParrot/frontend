@@ -164,7 +164,7 @@ function sendMessage() {
     slot["user_text"] = message
     let send_json = JSON.stringify(slot)
 
-    fetch("http://127.0.0.1:5000/api/chat/message", {
+    fetch("http://175.45.200.101:5000/api/chat/message", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
